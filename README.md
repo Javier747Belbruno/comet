@@ -225,3 +225,37 @@ For more information, see [SCENARIO.md](./SCENARIO.md).
 
 - make sure that the deploying address has at least 2 units of the chain's
   native asset (i.e. 2 ETH for Kovan, 2 AVAX for Fuji)
+  
+  
+  
+ ☄️ Compound III
+Protocol Development
+
+jared
+1h
+A few months ago, we began the discussion for a new multi-chain strategy 4; a version of the Compound protocol that can be deployed and run on all EVM compatible chains.
+
+Today, Compound Labs is excited to release a code repository to the Compound community, which we hope can form the basis of a multi-chain deployment strategy: comet 3, which the community has been referring to as Compound III.
+
+Compound III is designed with borrowers in mind, to be capital efficient, gas efficient, safe, and simple to govern.
+
+The repository uses a business source license 1, which Compound governance can grant usage to, as it sees fit, by making changes to compound-community-licenses.eth, a new ENS domain owned by the community.
+
+Developers can begin planning integrations with Compound III, and auditing / suggesting improvements to the codebase.
+
+Changelog
+The following is a summary of the major changes from the existing protocol:
+
+Compound III deployments feature a single borrowable (interest earning) base asset. All other assets are collateral. This reduces risk, and can improve capital efficiency.
+Collateral size limits can be set for each collateral asset (a.k.a. supply caps).
+There are separate borrowing collateral factors, and liquidation collateral factors. This protects borrowers from early liquidation, and can improve risk management.
+The risk management / liquidation engine has been entirely redesigned, to increase the safety of the protocol while preserving liquidator incentives.
+The price feed doesn’t expect a custom price oracle; instead, it is designed to use Chainlink directly, which is portable to EVM chains beyond Ethereum; governance can modify this decision in the future.
+Supply/borrow interest rate models can be decoupled from one another; governance has full control over economic policy.
+Advanced account management tools, which can enable new UX patterns and applications on top of the protocol.
+An abstract incentive metric is built natively into the core contract, to enable rewarding user activity from day one of the protocol. A rewards system is elegantly added on top to provide incentives similar to v2, but flexible enough to be extended by governance in new ways.
+A code repository which includes sophisticated tooling for managing and testing deployments, based on years of experience and feedback from prior versions of the protocol.
+Next Steps
+Over the coming weeks, we look forward to working with the community to finish auditing the protocol; learning from the current testnet; releasing an initial deployment on Ethereum, with interfaces, liquidation bots, and tooling; and beginning deployments across other EVM chains with tools for governance to manage those deployments.
+
+If you have any questions, please join the next Community Developer call in Discord! :chart_with_upwards_trend:
